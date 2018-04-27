@@ -21,9 +21,9 @@ function onPageShow() {
 
 function recognize(user) {
 		console.log("launch button clicked");
-        var user = $("#user").val();
+        var email = $("#emailadress").val();
         var pass = $("#pass").val();
-    if(user=='') navigator.notification.alert(
+    if(email=='') navigator.notification.alert(
     'Please enter your Username!',  // message
     'Username error',            // title
     'Done'                  // buttonName
@@ -31,7 +31,7 @@ function recognize(user) {
  if(pass=='') alert("Please enter your password.");
     
 
-    Backendless.UserService.login( user, pass, true).then( function( loggedInUser ) {
+    Backendless.UserService.login( email, pass, true).then( function( loggedInUser ) {
         
         //user logged in
         

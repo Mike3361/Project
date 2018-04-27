@@ -167,10 +167,25 @@ function initMap(latitude, longitude) {
     
     nmap.mapTypes.set('nightMap',nightMapType);
     
+    $("#roadmap").on("click", function() {
+        console.log("roadmap clicked");
+        nmap.setMapTypeId('roadmap');
+    });
     
-    nmap.setMapTypeId('nightMap');    
-    nmap.setMapTypeId('satellite');
-    nmap.setMapTypeId('roadmap');
+    $("#maptypebutton").change( function() {
+         
+        var a = $("#maptypebutton").prop("checked") ? "Normal" : "Night";
+         console.log(a);
+        
+        if(a="Normal")  nmap.setMapTypeId('nightMap');
+        else if (a="Night") nmap.setMapTypeId('roadmap');
+        
+        
+     });
+    
+    //nmap.setMapTypeId('roadmap');    
+    //nmap.setMapTypeId('satellite');
+    
     
     var infoWindow = new google.maps.InfoWindow({map: nmap});
     

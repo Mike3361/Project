@@ -10,7 +10,7 @@ function onPageShow() {
 	//run a query
 	
     
-    $(document).on("click", "#return", onReady);
+    $(document).on("click", "#return", search);
    
     
 	
@@ -18,35 +18,19 @@ function onPageShow() {
 
 } 
 
-function onReady(){
-    Backendless.Data.of( "Register" ).find().then(search).catch(error);
-}
 
-function search(register) {
+
+function search(user) {
 		console.log("search");
         var emailaddress = $("#emailaddress").val();
-    if(emailaddress=='') alert("Please enter your email address.");
-
-        console.log(register[0].Username);
-        var j = 0;
-     for(var i = 0; i < register.length; i++){
-         if(emailaddress==register[i].Email)
-             {
-                 if(pass==register[i].Password)
-             {
-                 alert();
-                 j=1;
-             }
-                 else {
-                     j=1;
-                     alert("The password you entered is wrong, please enter again.");}
-     }
-
-}
-    if(j==0&&user!=''&&pass!='')
-     alert("This account does not exist.");
-}
-
+   Backendless.UserService.restorePassword( emailaddress )
+ .then( function() {
+       alert("password");
+        window.location.href='index.html';
+  })
+ .catch( function( error ) {
+       alert(error)
+  }); 
 
 
 
@@ -60,6 +44,7 @@ function checkConnection() {
     if(networkState = "none")
  
     alert('Connection type: No network connection');
+}
 }
 
   
