@@ -177,8 +177,8 @@ function initMap(latitude, longitude) {
         var a = $("#maptypebutton").prop("checked") ? "Normal" : "Night";
          console.log(a);
         
-        if(a="Normal")  nmap.setMapTypeId('nightMap');
-        else if (a="Night") nmap.setMapTypeId('roadmap');
+        if(a="Normal")  {nmap.setMapTypeId('nightMap');}
+        else if (a="Night") {nmap.setMapTypeId('roadmap');}
         
         
      });
