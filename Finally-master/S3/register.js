@@ -45,6 +45,7 @@ function onAddTask() {
     
     var user = new Backendless.User();
     user.email = $("#email").val();
+     user.username = $("#username").val();
     user.password = $("#password").val();
     
     

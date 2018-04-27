@@ -10,7 +10,7 @@ var locationOptions = {
 	enableHighAccuracy: true 
 };
 
-var nighStyle = [
+var nightStyle = [
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
@@ -93,9 +93,11 @@ var nighStyle = [
 
 var nightOptions = {name: 'Night map'};
 
+    
 
 //when the jQuery Mobile page is initialised
 $(document).on('pageinit', function() {
+$(document).on("click", "#logout", logout);
 	
     console.log("Ready");
     
@@ -153,7 +155,7 @@ function initMap(latitude, longitude) {
     
     console.log("initMap");
 
-    var nightMapType = new google.maps.StyledMapType(nighStyle,nightOptions);
+    var nightMapType = new google.maps.StyledMapType(nightStyle,nightOptions);
     
     
     
@@ -242,6 +244,16 @@ function  append(Position) {
 
 
 
+}
+function logout(){
+    console.log("logout");
+Backendless.UserService.logout()
+ .then( function() {
+     window.location.href='index.html';
+  })
+ .catch( function( error ) {
+    checkConnection()
+  });
 }
 
 function error(err) {

@@ -10,7 +10,7 @@ function onPageShow() {
 	//run a query
 	
     
-    $(document).on("click", "#launch", onReady);
+    $(document).on("click", "#launch", recognize);
    
     
 	
@@ -18,9 +18,6 @@ function onPageShow() {
 
 } 
 
-function onReady(){
-    Backendless.Data.of( user ).find().then(recognize).catch(error);
-}
 
 function recognize(user) {
 		console.log("launch button clicked");
@@ -34,16 +31,27 @@ function recognize(user) {
  if(pass=='') alert("Please enter your password.");
     
 
-    Backendless.UserService.login( login, password, stayLoggedIn ).then( function( loggedInUser ) {
+    Backendless.UserService.login( user, pass, true).then( function( loggedInUser ) {
+        
+        //user logged in
+        
+        window.location.href='nightmap.html';
+        
    }).catch( function( error ) {
+        
+        //not worked 
+        //user not logged in
+       alert(error);
+        //error message contains reason why not
+        
    });
     
-        console.log(register[0].Username);
+        /*console.log(user[0].username);
         var j = 0;
-     for(var i = 0; i < register.length; i++){
-         if(user==register[i].Username)
+     for(var i = 0; i < user.length; i++){
+         if(user==user[i].username)
              {
-                 if(pass==register[i].Password)
+                 if(pass==user[i].password)
              {
              window.location.href='mappage.html';
                  j=1;
@@ -55,7 +63,7 @@ function recognize(user) {
 
 }
     if(j==0&&user!=''&&pass!='')
-     alert("This account does not exist.");
+     alert("This account does not exist.");*/
 }
 
 
